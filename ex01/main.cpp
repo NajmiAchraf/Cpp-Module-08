@@ -2,9 +2,12 @@
 
 int main() {
 	try {
-		unsigned int N	= 1000000;
+		unsigned int N	= 10000;
 		Span		 sp = Span(N);
 
+		// sp.addNumber(25);
+		// sp.addNumber(2);
+		// sp.addNumber(24);
 		srand(time(NULL));
 		for (size_t i = 0; i < N; i++) {
 			sp.addNumber(static_cast<unsigned int>(rand()));

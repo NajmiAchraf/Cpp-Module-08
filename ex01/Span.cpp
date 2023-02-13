@@ -44,11 +44,18 @@ void Span::checkN(unsigned int N) {
 	}
 }
 
-void Span::addNumber(int N) {
-	if (this->_vector.size() == this->_N) {
+// void Span::addNumber(int N) {
+// 	if (this->_vector.size() == this->_N) {
+// 		throw std::runtime_error("Span is full");
+// 	}
+// 	this->_vector.push_back(N);
+// }
+
+void Span::addNumber(std::vector<int>::iterator const &begin, std::vector<int>::iterator const &end) {
+	int size = std::distance(begin, end);
+	if (size > static_cast<int>(this->_N))
 		throw std::runtime_error("Span is full");
-	}
-	this->_vector.push_back(N);
+	this->_vector.insert(this->_vector.end(), begin, end);
 }
 
 int Span::shortestSpan() {
