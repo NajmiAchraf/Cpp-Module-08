@@ -2,13 +2,13 @@
 
 int main() {
 	try {
-		Span sp = Span(5);
+		unsigned int N	= 1000000;
+		Span		 sp = Span(N);
 
-		sp.addNumber(6);
-		sp.addNumber(3);
-		sp.addNumber(17);
-		sp.addNumber(9);
-		sp.addNumber(11);
+		srand(time(NULL));
+		for (size_t i = 0; i < N; i++) {
+			sp.addNumber(static_cast<unsigned int>(rand()));
+		}
 
 		std::cout << sp.shortestSpan() << std::endl;
 		std::cout << sp.longestSpan() << std::endl;
