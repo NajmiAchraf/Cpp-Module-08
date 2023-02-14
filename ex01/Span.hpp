@@ -14,8 +14,9 @@ class Span {
 	unsigned int	 _N;
 
   public:
-	unsigned int getN() const;
-	void		 setN(unsigned int N);
+	unsigned int	 getN() const;
+	std::vector<int> getVector() const;
+	void			 setN(unsigned int N);
 
 	Span();
 	Span(unsigned int N);
@@ -24,7 +25,11 @@ class Span {
 	~Span();
 
 	void checkN(unsigned int N);
-	void addNumber(std::vector<int>::iterator const &begin, std::vector<int>::iterator const &end);
+	void checkVector();
+
+	void addNumber();
+	void addNumber(int N);
+	void addNumber(std::vector<int> const &vector);
 
 	int shortestSpan();
 	int longestSpan();

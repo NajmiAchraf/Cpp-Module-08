@@ -2,16 +2,19 @@
 
 int main() {
 	try {
-		unsigned int N	= 10000;
+		unsigned int N	= 100;
 		Span		 sp = Span(N);
+		// Span		 v	= Span(N);
 
-		// sp.addNumber(25);
-		// sp.addNumber(2);
-		// sp.addNumber(24);
-		srand(time(NULL));
-		for (size_t i = 0; i < N; i++) {
-			sp.addNumber(static_cast<unsigned int>(rand()));
-		}
+		sp.addNumber();
+		// v.addNumber(25);
+		// v.addNumber(2);
+		// v.addNumber(24);
+		// srand(time(NULL));
+		// for (size_t i = 0; i < N; i++) {
+		// 	v.addNumber(static_cast<unsigned int>(rand()));
+		// }
+		// sp.addNumber(v.getVector());
 
 		std::cout << sp.shortestSpan() << std::endl;
 		std::cout << sp.longestSpan() << std::endl;

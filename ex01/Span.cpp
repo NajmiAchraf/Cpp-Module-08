@@ -9,6 +9,10 @@ unsigned int Span::getN() const {
 	return this->_N;
 }
 
+std::vector<int> Span::getVector() const {
+	return this->_vector;
+}
+
 void Span::setN(unsigned int N) {
 	this->checkN(N);
 	this->_N = N;
@@ -44,18 +48,32 @@ void Span::checkN(unsigned int N) {
 	}
 }
 
-// void Span::addNumber(int N) {
-// 	if (this->_vector.size() == this->_N) {
-// 		throw std::runtime_error("Span is full");
-// 	}
-// 	this->_vector.push_back(N);
-// }
-
-void Span::addNumber(std::vector<int>::iterator const &begin, std::vector<int>::iterator const &end) {
-	int size = std::distance(begin, end);
-	if (size > static_cast<int>(this->_N))
+void Span::checkVector() {
+	if (this->_vector.size() == this->_N) {
 		throw std::runtime_error("Span is full");
-	this->_vector.insert(this->_vector.end(), begin, end);
+	}
+}
+
+void Span::addNumber() {
+	this->checkVector();
+	Span v = Span(this->_N);
+	srand(time(NULL));
+	for (size_t i = 0; i < this->_N; i++) {
+		v.addNumber(static_cast<unsigned int>(rand()));
+	}
+	this->addNumber(v.getVector());
+}
+
+void Span::addNumber(int N) {
+	this->checkVector();
+	this->_vector.push_back(N);
+}
+
+void Span::addNumber(std::vector<int> const &vector) {
+	int size = std::distance(vector.begin(), vector.end());
+	if (size > static_cast<int>(this->_N))
+		throw std::runtime_error("Out of vector range");
+	this->_vector.insert(this->_vector.end(), vector.begin(), vector.end());
 }
 
 int Span::shortestSpan() {
